@@ -1,10 +1,12 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {FormGroup, FormBuilder} from '@angular/forms';
+import {Observable, of} from 'rxjs';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
+import {SearchService} from './services/crud.service';
+import {Product} from './interfaces/Product';
 
 export interface PeriodicElement {
   name: string;
@@ -12,7 +14,7 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {name: 'Sachin Tendulkar', age: 42,},
+  {name: 'Sachin Tendulkar', age: 42},
   {name: 'Virat Kohli', age: 30},
 ];
 
@@ -22,38 +24,42 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['autocomplete-component.css'],
 })
 export class AutocompleteComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'age'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-
+  constructor(private formBuilder: FormBuilder, private searchService: SearchService) {
+  }
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  formControl = new FormControl();
-  options: string[] = ['Sachin Tendulkar', 'Virat Kohli', 'Rohith Sharma'];
-  filteredOptions: Observable<PeriodicElement[]>;
+  stateForm: FormGroup = this.formBuilder.group({
+    stateGroup: '',
+  });
+  stateGroup: Product[];
+  displayedColumns: string[] = ['name', 'age'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  stateGroupOptions: Observable<Product[]>;
 
   ngOnInit() {
-    this.filteredOptions = this.formControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
+    this.stateForm.get('stateGroup')!.valueChanges
+      .pipe(debounceTime(250))
+      .pipe(distinctUntilChanged())
+      .subscribe(result => this.getProducts(result));
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  private getProducts(result: string) {
+    if (result && result.trim() !== '') {
+      this.searchService.getProducts(result).subscribe(data => this._filterGroup(data));
+    } else {
+      this.stateGroupOptions = of(null);
+    }
   }
 
-  private _filter(value: string): PeriodicElement[] {
-    if (value) {
-      const filterValue = value.toLowerCase();
-      const filteredSet = ELEMENT_DATA.filter(option => option.name.toLowerCase().includes(filterValue));
-      this.dataSource = new MatTableDataSource(filteredSet);
-      return filteredSet;
+  private _filterGroup(data: object): void {
+    if (data !== null || (data as Array<Product>).length > 0) {
+      const products = data as Product[];
+      this.stateGroup = products;
+      this.stateGroupOptions = of(products);
     } else {
-      return [];
+      this.stateGroupOptions = of(null);
     }
-
   }
 }

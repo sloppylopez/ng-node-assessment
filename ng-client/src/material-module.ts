@@ -37,7 +37,7 @@ import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
-
+// TODO import only needed dependencies
 @NgModule({
   exports: [
     CdkTableModule,

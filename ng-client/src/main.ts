@@ -26,6 +26,7 @@ import {MatNativeDateModule} from '@angular/material/core';
   bootstrap: [AutocompleteComponent],
   providers: []
 })
-export class AppModule {}
+export class AppModule {
+}
 
 platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.error(err));
