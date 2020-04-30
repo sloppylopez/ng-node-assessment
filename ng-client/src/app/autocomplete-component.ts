@@ -17,22 +17,22 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
-  selector: 'autocomplete-simple-example',
-  templateUrl: 'autocomplete-simple-example.html',
-  styleUrls: ['autocomplete-simple-example.css'],
+  selector: 'app-autocomplete-simple-example',
+  templateUrl: 'autocomplete-component.html',
+  styleUrls: ['autocomplete-component.css'],
 })
-export class AutocompleteSimpleExample implements OnInit {
+export class AutocompleteComponent implements OnInit {
   displayedColumns: string[] = ['name', 'age'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  myControl = new FormControl();
+  formControl = new FormControl();
   options: string[] = ['Sachin Tendulkar', 'Virat Kohli', 'Rohith Sharma'];
   filteredOptions: Observable<PeriodicElement[]>;
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges
+    this.filteredOptions = this.formControl.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filter(value))

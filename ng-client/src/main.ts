@@ -8,7 +8,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DemoMaterialModule} from './material-module';
 
-import {AutocompleteSimpleExample} from './app/autocomplete-simple-example';
+import {AutocompleteComponent} from './app/autocomplete-component';
 import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
@@ -21,11 +21,11 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatNativeDateModule,
     ReactiveFormsModule,
   ],
-  entryComponents: [AutocompleteSimpleExample],
-  declarations: [AutocompleteSimpleExample],
-  bootstrap: [AutocompleteSimpleExample],
+  entryComponents: [AutocompleteComponent],
+  declarations: [AutocompleteComponent],
+  bootstrap: [AutocompleteComponent],
   providers: []
 })
 export class AppModule {}
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.error(err));
