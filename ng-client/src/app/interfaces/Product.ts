@@ -1,12 +1,12 @@
 export interface Product {
-  id: string;
+  id: number;
   name: string;
   brand: string;
-  price: string;
-  availability: string;
+  price: number;
+  availability: number;
   description: string;
   category: string;
-  bestRating: string;
+  bestRating: number;
 }
 
 export const entries: Product[] = [];

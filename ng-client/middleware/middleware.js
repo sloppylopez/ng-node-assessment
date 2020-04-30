@@ -10,7 +10,7 @@ app.use(cors());
 app.get('/products/:id', (req, res) => {
   axios.get('http://localhost:3000/products').then(resp => {
     const filteredProducts = resp.data.filter(product => {
-      return product.id.includes(req.params.id);
+      return product.id.toString().includes(req.params.id);
     });
     res.send(filteredProducts);
   });

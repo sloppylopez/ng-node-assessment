@@ -1,7 +1,8 @@
+<script src="autocomplete-component.ts"></script>
 <script src="interfaces/Product.ts"></script>
 <form [formGroup]="stateForm">
   <mat-form-field>
-    <input type="text" matInput placeholder="Gate Changes" formControlName="stateGroup" required
+    <input type="text" matInput placeholder="Find Products by id:" formControlName="stateGroup" required
            [matAutocomplete]="autoGroup">
     <mat-autocomplete #autoGroup="matAutocomplete" >
       <mat-option *ngFor="let group of stateGroupOptions | async" [value]="group.flightNumber">
@@ -12,16 +13,52 @@
 </form>
 
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
   <!-- NAME Column -->
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> NAME </th>
     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
 
-  <!-- AGE Column -->
-  <ng-container matColumnDef="age">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> AGE </th>
-    <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+  <!-- BRAND Column -->
+  <ng-container matColumnDef="brand">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> BRAND </th>
+    <td mat-cell *matCellDef="let element"> {{element.brand}} </td>
+  </ng-container>
+
+  <!-- PRICE Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> PRICE </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+
+  <!-- AVAILABILITY Column -->
+  <ng-container matColumnDef="availability">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> AVAILABILITY </th>
+    <td mat-cell *matCellDef="let element"> {{element.availability}} </td>
+  </ng-container>
+
+  <!-- DESCRIPTION Column -->
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> DESCRIPTION </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+  </ng-container>
+
+  <!-- CATEGORY Column -->
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> CATEGORY </th>
+    <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+  </ng-container>
+
+  <!-- BEST RATING Column -->
+  <ng-container matColumnDef="bestRating">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> BEST RATING </th>
+    <td mat-cell *matCellDef="let element"> {{element.bestRating}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

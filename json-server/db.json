@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Name 1",
       "brand": "brand 1",
       "price": 1.0,
@@ -11,7 +11,7 @@
       "bestRating": 1
     },
     {
-      "id": "11",
+      "id": 11,
       "name": "Name 11",
       "brand": "brand 11",
       "price": 11.0,
@@ -21,7 +21,7 @@
       "bestRating": 5
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Name 2",
       "brand": "brand 2",
       "price": 2.0,
@@ -31,7 +31,7 @@
       "bestRating": 2
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Name 3",
       "brand": "brand 3",
       "price": 3.0,
