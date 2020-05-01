@@ -8,7 +8,7 @@ This project is reading a dummy JSON from disk using [json server](https://githu
 we display the data using an Angular 9 application.
 
 The front-end does not communicate directly with the json-server backend, as instead there is a middleware
-using node and express [middleware](https://github.com/typicode/json-server) to separate the logic between them
+using node and express [middleware](https://github.com/sloppylopez/ng-node-assessment/blob/master/ng-client/middleware/middleware.js) to separate the logic between them
 so when the backend changes we don't need to change the calls to the backend, this is a commonly used pattern 
 in front-end.
 
@@ -36,7 +36,7 @@ on a different terminal
 `npm run start:api`
 
 `npm start`
-
+7
 http://localhost:4200
 
 ## To run with minified code
