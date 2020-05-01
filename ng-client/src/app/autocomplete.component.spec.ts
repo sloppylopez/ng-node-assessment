@@ -4,7 +4,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {DemoMaterialModule} from './material-module';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule, ReactiveFormsModule, FormBuilder} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 
 describe('AppComponent', () => {

@@ -2,6 +2,47 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
 
+## Architecture of the project
+
+This project is reading a dummy JSON from disk using [json server](https://github.com/typicode/json-server)
+we display the data using an Angular 9 application.
+
+The front-end does not communicate directly with the json-server backend, as instead there is a middleware
+using node and express [middleware](https://github.com/typicode/json-server) to separate the logic between them
+so when the backend changes we don't need to change the calls to the backend, this is a commonly used pattern 
+in front-end.
+
+The Angular client is using Material UI.
+
+Regarding the minification of the code, Angular is already doing the minification of resounces when we do:
+`ng run start:prod`
+
+## To run the project
+
+`git clone https://github.com/sloppylopez/ng-node-assessment`
+
+`cd json-server`
+
+`npm i`
+
+`npm start`
+
+on a different terminal
+
+`cd ng-client`
+
+`npm i`
+
+`npm run start:api`
+
+`npm start`
+
+## To run with minified code
+
+`npm run start:prod`
+
+http://localhost:4200
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
