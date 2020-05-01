@@ -37,6 +37,8 @@ on a different terminal
 
 `npm start`
 
+http://localhost:4200
+
 ## To run with minified code
 
 `npm run start:prod`
