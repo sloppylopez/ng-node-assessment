@@ -5,7 +5,7 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
-import {SearchService} from './services/crud.service';
+import {SearchService} from './services/rest.service';
 import {Product} from './interfaces/Product';
 
 @Component({
