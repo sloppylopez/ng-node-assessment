@@ -43,6 +43,12 @@ on a different terminal
 
 http://localhost:4200
 
+## Disclaimer
+
+Google has found a dependency with a vulnerability, however, this dependency
+is inside the json-server project which is the project I was suggested to use
+to solve the assessment.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
