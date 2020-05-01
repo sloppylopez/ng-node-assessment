@@ -6,10 +6,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {DemoMaterialModule} from './material-module';
+import {DemoMaterialModule} from './app/material-module';
 
 import {AutocompleteComponent} from './app/autocomplete-component';
 import {MatNativeDateModule} from '@angular/material/core';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @NgModule({
   imports: [
@@ -24,7 +25,9 @@ import {MatNativeDateModule} from '@angular/material/core';
   entryComponents: [AutocompleteComponent],
   declarations: [AutocompleteComponent],
   bootstrap: [AutocompleteComponent],
-  providers: []
+  providers: [
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+  ]
 })
 export class AppModule {
 }

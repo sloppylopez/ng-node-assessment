@@ -4,8 +4,11 @@
   <mat-form-field>
     <input type="text" matInput placeholder="Find Products by id:" formControlName="stateGroup" required
            [matAutocomplete]="autoGroup">
-    <mat-autocomplete #autoGroup="matAutocomplete" >
-      <mat-option *ngFor="let group of stateGroupOptions | async" [value]="group.flightNumber">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="resetAutoInput()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-autocomplete #autoGroup="matAutocomplete">
+      <mat-option *ngFor="let group of stateGroupOptions | async" [value]="group.id.toString()">
         {{'id: ' + group.id + ' name: ' + group.name}}
       </mat-option>
     </mat-autocomplete>
@@ -13,6 +16,7 @@
 </form>
 
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
   <!-- ID Column -->
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
@@ -65,5 +69,5 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+<!--<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>-->
 
