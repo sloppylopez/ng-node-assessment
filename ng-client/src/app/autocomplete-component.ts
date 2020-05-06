@@ -64,17 +64,4 @@ export class AutocompleteComponent implements OnInit {
     this.stateGroupOptions = of(null);
     this.stateGroup = null;
   }
-
-  selectProduct(selectedProduct: string): void {
-    if (selectedProduct !== null) {
-      this.stateGroup = this.stateGroup.filter(product => product.id === parseInt(selectedProduct, 10));
-      this.dataSource = new MatTableDataSource(this.stateGroup);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      this.stateGroupOptions = of(this.stateGroup);
-    } else {
-      this.dataSource = new MatTableDataSource([]);
-      this.stateGroupOptions = of(null);
-    }
-  }
 }
